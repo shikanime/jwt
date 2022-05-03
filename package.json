@@ -1,10 +1,14 @@
 {
-  "name": "jwt",
+  "name": "@shikanime/jwt",
   "version": "1.0.0",
   "description": "Simple JWT implementation using Google Cloud KMS",
   "main": "src/index.ts",
   "repository": "git@github.com:Shikanime/jwt.git",
   "author": "Shikanime Deva <deva.shikanime@protonmail.com>",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/"
+  },
   "license": "MIT",
   "scripts": {
     "build": "swc src -s --config module.type=commonjs --config jsc.target=es2020 -d dist",
