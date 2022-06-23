@@ -4,7 +4,7 @@ import { dateToSeconds } from "./utils";
 export type Claims = {
   iss?: string;
   sub?: string;
-  aud?: string[];
+  aud?: string | string[];
   exp?: number;
   nbf?: number;
   iat?: number;
@@ -65,16 +65,11 @@ export type ClaimsOptions = {
 
 export const createJWTClaims = (options: ClaimsOptions): Claims => {
   const exp = dateToSeconds(new Date()) + options.expiresIn;
-  const aud = Array.isArray(options.audience)
-    ? options.audience
-    : options.audience !== undefined
-    ? [options.audience]
-    : undefined;
   const iat = dateToSeconds(new Date());
   return {
+    aud: options.audience,
     iat,
     exp,
-    aud,
   };
 };
 
