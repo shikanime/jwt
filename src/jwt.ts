@@ -80,8 +80,8 @@ export type JWTOptions = HeaderOptions &
   };
 
 export const createJWT = (options: JWTOptions): JWT => ({
-  header: { ...createJWTHeader(options), ...options.header },
-  claims: { ...createJWTClaims(options), ...options.payload },
+  header: { ...options.header, ...createJWTHeader(options) },
+  claims: { ...options.payload, ...createJWTClaims(options) },
 });
 
 export const encodeMessage = (header: Header, claims: Claims): string =>
